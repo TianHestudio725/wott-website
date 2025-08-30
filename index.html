@@ -1,101 +1,68 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WOTT - 终极3D抢占游戏</title>
-    <style>
-        /* 这里是CSS，负责让网页变好看 */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom, #1a1a2e, #16213e);
-            /* 深蓝色渐变背景，看起来很游戏风 */
-            color: #fff;
-            text-align: center;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-        }
-
-        .logo {
-            font-size: 4rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #e94560; /* 亮眼的红色 */
-            text-shadow: 0 0 10px rgba(233, 69, 96, 0.7);
-        }
-
-        .screenshot {
-            width: 80%;
-            max-width: 400px;
-            border: 3px solid #ddd;
-            border-radius: 10px;
-            margin: 20px auto;
-            /* 这里放你的游戏截图，暂时用一个灰色方块代替 */
-            height: 250px;
-            background-color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .description {
-            line-height: 1.6;
-            margin-bottom: 30px;
-            color: #b8b8d0;
-        }
-
-        /* 下载按钮的样式，要做得非常炫酷 */
-        .download-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background-color: #e94560; /* 红色 */
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 50px; /* 椭圆形的按钮 */
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .download-btn:hover {
-            background-color: #ff5c77;
-            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
-            transform: translateY(-2px); /* 鼠标放上去会有点浮起来的效果 */
-        }
-    </style>
+    <title>FPS控制器 - 開場動畫</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- 游戏的Logo或标题 -->
-        <div class="logo">WOTT</div>
-
-        <!-- 这里放游戏的宣传图或截图 -->
-        <div class="screenshot">[游戏截图]</div>
-
-        <!-- 游戏描述 -->
-        <p class="description">
-            欢迎来到《WOTT》的世界！这是一款前所未有的PUBG级别3D抢占射击游戏。<br>
-            体验极致的画面、紧张刺激的战斗和无限的战术可能。<br>
-            立即下载，加入战场！
-        </p>
-
-        <!-- ！！！最重要的下载按钮！！！ -->
-        <a href="wott_game_release.apk" class="download-btn" download="WOTT_Game.apk">立即下载</a>
-        <!-- 
-          解释一下这个按钮：
-          `href="wott_game_release.apk"`：指向你放在服务器上的APK文件
-          `download="WOTT_Game.apk"`：告诉浏览器下载的文件应该叫什么名字
-        -->
-
+    <!-- 背景容器 -->
+    <div class="background"></div>
+    
+    <!-- 加载屏幕 -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <div class="loader-bar"></div>
+            <div class="loader-text">加載中... <span id="progress">0%</span></div>
+        </div>
     </div>
+
+    <!-- 主内容 -->
+    <div class="container" id="mainContent">
+        <!-- 3D标题效果 -->
+        <div class="title-container">
+            <h1 class="main-title" id="mainTitle">FPS控制器</h1>
+            <h2 class="subtitle" id="subTitle">沉浸式第一人稱體驗</h2>
+        </div>
+
+        <!-- 粒子动画容器 -->
+        <canvas id="particleCanvas"></canvas>
+
+        <!-- 控制按钮 -->
+        <div class="controls">
+            <button class="btn primary" id="startBtn">開始體驗</button>
+            <button class="btn secondary" id="githubBtn">查看GitHub</button>
+        </div>
+
+        <!-- 特性展示 -->
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>流暢控制</h3>
+                <p>支持鍵盤、鼠標和手柄操作</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>3D環境</h3>
+                <p>完整的3D物理碰撞系統</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>高性能</h3>
+                <p>優化過的渲染性能</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 音效 -->
+    <audio id="hoverSound" preload="auto">
+        <source src="assets/sounds/hover.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="clickSound" preload="auto">
+        <source src="assets/sounds/click.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
